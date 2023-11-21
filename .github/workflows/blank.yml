@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Meowing Cat</title>
+	<style>
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 10px;
+		}
+		img {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 9999;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="playMeow()">Click me!</button>
+	<audio id="meow">
+		<source src="meow.mp3" type="audio/mpeg">
+	</audio>
+	<script>
+		var catImages = ["cat1.png", "cat2.png", "cat3.png"];
+		function playMeow() {
+			var audio = document.getElementById("meow");
+			var cat = document.getElementById("cat");
+			var randomIndex = Math.floor(Math.random() * catImages.length);
+			var catImage = catImages[randomIndex];
+			audio.play();
+			cat.src = catImage;
+			cat.style.display = "block";
+			setTimeout(function(){ cat.style.display = "none"; }, 3000);
+		}
+	</script>
+	<img id="cat" src="">
+</body>
+</html>
